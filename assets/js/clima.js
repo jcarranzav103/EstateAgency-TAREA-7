@@ -1,4 +1,6 @@
-
+ //Obtener las coordenadas de la posicion
+ var latitud = posicion.coords.latitude;
+ var longitud = posicion.coords.longitude;
 //Api de google maps
 //encontrar la ubicacion en especifico
 function EncontrarUbicacion() {
@@ -22,6 +24,7 @@ function EncontrarUbicacion() {
         initMap(latitud, longitud);
 
         clima(latitud, longitud);
+        posicionamiento(latitud, longitud);
     }
 
 
@@ -57,15 +60,15 @@ function calcularDistancia() {
     resultado.innerHTML = "La distancia entre Nueva York y San Francisco es de " + distanciaKM + " km.";
 }
 //Posicionamiento continuo
-function posicionamiento() {
+function posicionamiento(latitud, longitud) {
     var map = new google.maps.Map(document.getElementById('mapa'), {
         zoom: 14,
-        center: new google.maps.LatLng(40.748817, -73.985428) // Nueva York
+        center: new google.maps.LatLng(latitud, longitud) // Nueva York
     });
 
     // Crear un marcador en la posición inicial
     var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(40.748817, -73.985428),
+        position: new google.maps.LatLng(latitud, longitud), //9.968921252378705, -84.23358156994998
         map: map
     });
 
